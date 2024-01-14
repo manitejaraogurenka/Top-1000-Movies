@@ -22,11 +22,11 @@ body{
     display: flex;
     flex-wrap: wrap;
     gap: 3rem;
-    padding: 10rem 4rem 3rem 6rem;
+    padding: 10rem 4rem 3rem 2rem;
 }
 
 .header{
-    padding: 2rem 5rem 1rem 6rem;
+    padding: 2rem 5rem 1rem 2rem;
     display: flex;
     align-items: center;
     position: fixed;
