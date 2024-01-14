@@ -1,12 +1,15 @@
 import {moviesData} from "./database.js";
 
-const cardsContainer = document.querySelector("main");
+const cardsContainer = document.querySelector(".main");
+const inputSearch = document.querySelector("input");
+
+let searchValue = "";
+let filteredArrayOfMovies = [];
 
 const creatElement = (element)=>document.createElement(element);
 
 function creatMovieCard(movies){
     for(let movie of movies){
-        console.log(movie);
         const cardContainer = creatElement("div");
         cardContainer.classList.add("card", "shadow");
 
@@ -82,5 +85,37 @@ function creatMovieCard(movies){
         cardsContainer.appendChild(cardContainer);
     }
 }
+
+// search box functionality
+function filterMoviesByProperty(movie, property, searchValue) {
+    return movie[property].toLowerCase().includes(searchValue);
+}
+function handleSearch(event) {
+    const searchValue = event.target.value.toLowerCase();
+
+    filteredArrayOfMovies = searchValue ? moviesData.filter(movie =>
+        ['Title', 'Director', 'Star1', 'Star2', 'Star3', 'Star4'].some(property =>
+            filterMoviesByProperty(movie, property, searchValue.trim())
+        )
+    ) : moviesData;
+
+    if (filteredArrayOfMovies.length > 0) {
+        cardsContainer.innerHTML = "";
+        creatMovieCard(filteredArrayOfMovies);
+    }
+}
+
+function debounce(callback, delay){
+    let timerId;
+
+    return(...args)=>{
+        clearTimeout(timerId);
+        timerId = setTimeout(()=>{callback(...args)}, delay);
+    }
+}
+
+const debounceInput = debounce(handleSearch, 500);
+
+inputSearch.addEventListener("keyup", debounceInput);
 
 creatMovieCard(moviesData);

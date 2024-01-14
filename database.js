@@ -5298,7 +5298,7 @@ export const moviesData = [
   {
             "id": 331,
             "Poster_Link": "https://m.media-amazon.com/images/M/MV5BYWVlMjVhZWYtNWViNC00ODFkLTk1MmItYjU1MDY5ZDdhMTU3XkEyXkFqcGdeQXVyODIwMDI1NjM@._V1_UX67_CR0,0,67,98_AL_.jpg",
-            "Title": "BÃ£hubali: The Beginning",
+            "Title": "Baahubali: The Beginning",
             "Year": "2015",
             "Certificate": "UA",
             "Runtime": "159 min",

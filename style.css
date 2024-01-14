@@ -2,14 +2,14 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons+Outlined");
 
 *{
-    border: 0;
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 :root{
     --bg-color: black;
-    --card-bg: #0092cc;
+    --card-bg: #00658d;
     --text-color-primary: #fafafa;
 }
 
@@ -22,10 +22,17 @@ body{
     display: flex;
     flex-wrap: wrap;
     gap: 3rem;
+    padding: 10rem 4rem 3rem 6rem;
 }
 
 .header{
-    padding: 1.5rem;
+    padding: 2rem 5rem 1rem 6rem;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    width: 100vw;
+    background-color: var(--bg-color);
+    z-index: 1;
 }
 
 .heading-1{
@@ -33,10 +40,29 @@ body{
     color: var(--text-color-primary);
 }
 
+.search-container{
+    margin-left: auto;
+}
+
+.input{
+    background-color: transparent;
+    color: var(--text-color-primary);
+    border: 2px solid grey;
+    border-radius: 6px;
+    padding: 8px;
+    font-size: 1.25rem;
+    width: 25rem;
+}
+
 .card{
     width: 18rem;
     border-radius: 4px;
     background-color: var(--card-bg);
+}
+
+.card:hover{
+    scale: 1.1;
+    transition: scale 0.5s;
 }
 
 .card-image-container{
@@ -54,14 +80,16 @@ body{
 .movie-details{
     margin: 10px 0;
     color: var(--text-color-primary);
-    padding: 1px 8px;
+    padding: 8px;
     display: flex;
     flex-direction: column;
-    /* gap: 8px; */
+    gap: 8px;
 }
 
 .title{
     font-size: 1.1rem;
+    font-weight: 600;
+    color: bisque;
 }
 
 .genre{
@@ -79,16 +107,22 @@ body{
     gap: 4px;
 }
 
-.year, .rating-value, .certificate{
+.year, .star-rating, .certificate{
     border-right: solid var(--text-color-primary) 1.5px;
     color: var(--text-color-primary);
     padding-right: 0.8rem;
+    margin-bottom: 0.6rem;
 }
 
 .material-icons-outlined{
     color: gold;
+    margin-bottom: 0.8rem;
 }
 
 .Runtime{
     color: var(--text-color-primary);
+}
+
+.rating-value{
+    margin-bottom: 0.8rem;
 }
