@@ -66,6 +66,11 @@ body{
     border: 2px solid grey;
 }
 
+#genre-select{
+    max-height: 150px; /* Set a fixed max height for the dropdown */
+    overflow-y: auto; /* Enable vertical scrolling if needed */
+}
+
 .option{
     background-color: var(--card-bg);
 }
