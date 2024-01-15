@@ -142,3 +142,21 @@ body{
 .rating-value{
     margin-bottom: 0.8rem;
 }
+
+@media (max-width: 600px) {
+    .main {
+        padding: 8rem 1rem 3rem 1rem;
+    }
+
+    .header {
+        padding: 1rem;
+    }
+
+    .heading-1 {
+        font-size: 1.5rem;
+    }
+
+    .options {
+        flex-direction: column;
+    }
+}
