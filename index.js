@@ -2,8 +2,10 @@ import {moviesData} from "./database.js";
 
 const cardsContainer = document.querySelector(".main");
 const inputSearch = document.querySelector(".input");
+const movieYear = document.querySelector(".searchYear");
 const movieRatings = document.querySelector("#rating-select");
 const movieGenres = document.querySelector("#genre-select");
+const movieCertificate = document.querySelector("#certificate-select");
 
 const creatElement = (element)=>document.createElement(element);
 
@@ -95,6 +97,8 @@ function handleSearchAndRating(event) {
     const searchValue = inputSearch.value.toLowerCase();
     const ratings = movieRatings.value;
     const genres = movieGenres.value;
+    const Year = movieYear.value;
+    const Certificate = movieCertificate.value;
 
     let filteredMovies = moviesData;
 
@@ -106,15 +110,22 @@ function handleSearchAndRating(event) {
         );
     }
 
+    if (Year) {
+        filteredMovies = filteredMovies.filter(movie =>parseInt(movie.Year) >= Year
+        );
+    }
+
     if (ratings) {
-        filteredMovies = filteredMovies.filter(movie =>
-            movie.IMDB_Rating >= ratings
+        filteredMovies = filteredMovies.filter(movie =>movie.IMDB_Rating >= ratings
         );
     }
 
     if(genres){
-        filteredMovies = filteredMovies.filter(movie =>
-            movie.Genre.includes(genres));
+        filteredMovies = filteredMovies.filter(movie =>movie.Genre.includes(genres));
+    }
+
+    if(Certificate){
+        filteredMovies = filteredMovies.filter(movie =>movie.Certificate===Certificate);
     }
 
     cardsContainer.innerHTML = "";
@@ -132,7 +143,9 @@ const debounce = (callback, delay) => {
 
 const debounceInput = debounce(handleSearchAndRating, 500);
 inputSearch.addEventListener("keyup", debounceInput);
+movieYear.addEventListener("keyup", debounceInput);
 movieRatings.addEventListener("change", handleSearchAndRating);
 movieGenres.addEventListener("change", handleSearchAndRating);
+movieCertificate.addEventListener("change", handleSearchAndRating);
 
 creatMovieCard(moviesData);

@@ -1,25 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons+Outlined");
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-:root{
+:root {
     --bg-color: black;
     --card-bg: #00658d;
     --text-color-primary: #fafafa;
 }
 
-body{
+body {
     background-color: #020028;
     background-image: url("https://transparenttextures.com/patterns/cubes.png");
     font-family: 'Montserrat', sans-serif;
 }
 
-.main{
+.main {
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
@@ -32,58 +32,51 @@ body{
     align-items: center;
     position: fixed;
     width: 100vw;
-    background-color: var(--bg-color);
-    z-index: 1;
     background-color: #040015;
     background-image: url("https://transparenttextures.com/patterns/cubes.png");
     box-shadow: 0 4px 8px rgba(100, 100, 100, 0.67);
+    z-index: 1;
 }
 
 .heading-1 {
     font-size: 3rem;
-    color: transparent; /* Make the text transparent */
-    background: linear-gradient(to bottom, gold, rgba(255, 215, 0, 0.8)); /* Apply the gradient with reduced transparency */
-    -webkit-background-clip: text; /* Clip the background to the text */
+    color: transparent;
+    background: linear-gradient(to bottom, gold, rgba(255, 215, 0, 0.8));
+    -webkit-background-clip: text;
     background-clip: text;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.options{
+.options {
     display: flex;
     align-items: center;
     gap: 10px;
     margin-left: auto;
 }
 
-.input{
+.input,
+.rating-select,
+.searchYear,
+#certificate-select {
     background-color: var(--bg-color);
     color: var(--text-color-primary);
     border: 2px solid grey;
     border-radius: 6px;
     padding: 8px;
     font-size: 1.25rem;
-    width: 25rem;
+    font-size: 0.8rem;
+    width: fit-content;
 }
 
-.rating-select{
-    background-color: var(--bg-color);
-    border-radius: 4px;
-    padding: 8px;
-    font-size: 1.25rem;
-    color: var(--text-color-primary);
-    border: 2px solid grey;
+.searchYear{
+    margin-left: 0.5rem;
 }
 
-#genre-select{
-    max-height: 150px; /* Set a fixed max height for the dropdown */
-    overflow-y: auto; /* Enable vertical scrolling if needed */
+.input{
+    width: 20rem;
 }
 
-.option{
-    background-color: var(--card-bg);
-}
-
-.card{
+.card {
     width: 18rem;
     border-radius: 4px;
     background-color: var(--card-bg);
@@ -91,23 +84,23 @@ body{
 
 .card:hover {
     transform: scale(1.06);
-    transition: transform 0.5s, box-shadow 0.5s; /* Add box-shadow transition */
-    box-shadow: 0 4px 10px rgba(0, 238, 255, 0.815); /* Add shadow on hover */
+    transition: transform 0.5s, box-shadow 0.5s;
+    box-shadow: 0 4px 10px rgba(0, 238, 255, 0.815);
 }
 
-.card-image-container{
+.card-image-container {
     width: 100%;
     height: 18rem;
 }
 
-.card-image{
+.card-image {
     width: 100%;
     height: 100%;
     object-fit: contain;
     position: center center;
 }
 
-.movie-details{
+.movie-details {
     margin: 10px 0;
     color: var(--text-color-primary);
     padding: 8px;
@@ -116,50 +109,52 @@ body{
     gap: 8px;
 }
 
-.title{
+.title {
     font-size: 1.1rem;
     font-weight: 600;
     color: bisque;
 }
 
-.genre{
+.genre {
     font-size: 0.875rem;
 }
 
-.ratings{
+.ratings {
     display: flex;
     justify-content: space-evenly;
 }
 
-.star-rating{
+.star-rating {
     display: flex;
     align-items: center;
     gap: 4px;
 }
 
-.year, .star-rating, .certificate{
+.rating-value{
+    margin-bottom: 1rem;
+}
+
+.year,
+.star-rating,
+.certificate {
     border-right: solid var(--text-color-primary) 1.5px;
     color: var(--text-color-primary);
     padding-right: 0.8rem;
     margin-bottom: 0.6rem;
 }
 
-.material-icons-outlined{
+.material-icons-outlined {
     color: gold;
     margin-bottom: 0.8rem;
 }
 
-.Runtime{
+.Runtime {
     color: var(--text-color-primary);
 }
 
-.rating-value{
-    margin-bottom: 0.8rem;
-}
-
-@media (max-width: 800px) {
+@media (max-width: 932px) {
     .main {
-        padding: 12rem 1rem 3rem 4rem;
+        padding: 11rem 1rem 3rem 4rem;
     }
 
     .header {
@@ -168,30 +163,24 @@ body{
         flex-direction: column;
         flex-wrap: wrap;
     }
-    .heading-1{
+
+    .heading-1 {
         font-size: 2rem;
         padding-right: 1rem;
         padding-bottom: 0.5rem;
     }
 
-    .input{
-        padding: 2px;
-        font-size: 0.8rem;
-        border-radius: 2px;
-        display: flex;
-    }
-
-    .rating-select{
-        padding: 2px;
-        border-radius: 2px;
-        font-size: 0.8rem;
-    }
-
     .options {
-        flex-direction: column;
+        flex-wrap: wrap;
     }
 
     .search-container{
         width: auto;
+        gap: 2px;
     }
+    .searchYear{
+        width: 4rem;
+        margin-left: 0.5rem;
+    }
+
 }
