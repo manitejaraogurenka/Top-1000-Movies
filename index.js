@@ -1,10 +1,9 @@
 import {moviesData} from "./database.js";
 
 const cardsContainer = document.querySelector(".main");
-const inputSearch = document.querySelector("input");
-
-let searchValue = "";
-let filteredArrayOfMovies = [];
+const inputSearch = document.querySelector(".input");
+const movieRatings = document.querySelector("#rating-select");
+const movieGenres = document.querySelector("#genre-select");
 
 const creatElement = (element)=>document.createElement(element);
 
@@ -87,35 +86,53 @@ function creatMovieCard(movies){
 }
 
 // search box functionality
+
 function filterMoviesByProperty(movie, property, searchValue) {
     return movie[property].toLowerCase().includes(searchValue);
 }
-function handleSearch(event) {
-    const searchValue = event.target.value.toLowerCase();
 
-    filteredArrayOfMovies = searchValue ? moviesData.filter(movie =>
-        ['Title', 'Director', 'Star1', 'Star2', 'Star3', 'Star4'].some(property =>
-            filterMoviesByProperty(movie, property, searchValue.trim())
-        )
-    ) : moviesData;
+function handleSearchAndRating(event) {
+    const searchValue = inputSearch.value.toLowerCase();
+    const ratings = movieRatings.value;
+    const genres = movieGenres.value;
 
-    if (filteredArrayOfMovies.length > 0) {
-        cardsContainer.innerHTML = "";
-        creatMovieCard(filteredArrayOfMovies);
+    let filteredMovies = moviesData;
+
+    if (searchValue) {
+        filteredMovies = filteredMovies.filter(movie =>
+            ['Title', 'Director', 'Star1', 'Star2', 'Star3', 'Star4'].some(property =>
+                filterMoviesByProperty(movie, property, searchValue.trim())
+            )
+        );
     }
+
+    if (ratings) {
+        filteredMovies = filteredMovies.filter(movie =>
+            movie.IMDB_Rating >= ratings
+        );
+    }
+
+    if(genres){
+        filteredMovies = filteredMovies.filter(movie =>
+            movie.Genre.includes(genres));
+    }
+
+    cardsContainer.innerHTML = "";
+    creatMovieCard(filteredMovies);
 }
 
-function debounce(callback, delay){
+const debounce = (callback, delay) => {
     let timerId;
 
-    return(...args)=>{
+    return (...args) => {
         clearTimeout(timerId);
-        timerId = setTimeout(()=>{callback(...args)}, delay);
-    }
-}
+        timerId = setTimeout(() => { callback(...args); }, delay);
+    };
+};
 
-const debounceInput = debounce(handleSearch, 500);
-
+const debounceInput = debounce(handleSearchAndRating, 500);
 inputSearch.addEventListener("keyup", debounceInput);
+movieRatings.addEventListener("change", handleSearchAndRating);
+movieGenres.addEventListener("change", handleSearchAndRating);
 
 creatMovieCard(moviesData);

@@ -21,12 +21,12 @@ body{
 .main{
     display: flex;
     flex-wrap: wrap;
-    gap: 3rem;
-    padding: 10rem 4rem 3rem 6rem;
+    gap: 2rem;
+    padding: 10rem 4rem 3rem 3rem;
 }
 
 .header{
-    padding: 2rem 5rem 1rem 6rem;
+    padding: 2rem 5rem 1rem 3rem;
     display: flex;
     align-items: center;
     position: fixed;
@@ -40,7 +40,10 @@ body{
     color: var(--text-color-primary);
 }
 
-.search-container{
+.options{
+    display: flex;
+    align-items: center;
+    gap: 10px;
     margin-left: auto;
 }
 
@@ -52,6 +55,19 @@ body{
     padding: 8px;
     font-size: 1.25rem;
     width: 25rem;
+}
+
+.rating-select{
+    background-color: transparent;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 1.25rem;
+    color: var(--text-color-primary);
+    border: 2px solid grey;
+}
+
+.option{
+    background-color: var(--card-bg);
 }
 
 .card{
